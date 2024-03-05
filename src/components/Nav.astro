@@ -21,7 +21,7 @@ const navLinks = textLinks.filter((link) => link.href !== Astro.url.pathname)
 /** Conditional variable to switch open the nav menu */
 ---
 
-<nav class='text-[#FDD387]'>
+<nav class='text-[#FDD387] '>
   <div class='flex bg-[#02003D] h-16 items-center justify-between px-3'>
     <div class='flex-none w-1/6'>
       <Image
@@ -44,7 +44,7 @@ const navLinks = textLinks.filter((link) => link.href !== Astro.url.pathname)
       >
     </div>
   </div>
-  <section class='bg-[#02003D] hidden justify-end w-full' id='nav-menu'>
+  <section class='bg-[#02003D] hidden justify-end w-full absolute' id='nav-menu'>
     <ul class='nav-items flex-col justify-center'>
       {
         navLinks.map(({ label, href }) => (

@@ -21,9 +21,9 @@ export const socials: { [key: string]: Social } = {
 export const email: string = ''
 export const urls: { [key: string]: string } = {
   home: '/',
-  about: '/about/',
-  cars: '/cars/',
-  motorcycles: '/motorcycles/',
-  quote: '/quote/',
-  404: '/404/',
+  about: '/about',
+  cars: '/cars',
+  motorcycles: '/motorcycles',
+  quote: '/quote',
+  404: '/404',
 }
