@@ -1,0 +1,106 @@
+---
+import { Image } from 'astro:assets'
+import Logo from '../images/Logo.png'
+import { socials, urls } from '../constants'
+import '/node_modules/flag-icons/css/flag-icons.min.css'
+import { FaCar, FaHome, FaMotorcycle } from 'react-icons/fa'
+import { IoMdPricetag, IoMdClose } from 'react-icons/io'
+import { GiHamburgerMenu } from 'react-icons/gi'
+
+/** Main menu items */
+
+const textLinks: { label: string; href: string }[] = [
+  { label: 'Home', href: urls.home },
+  { label: 'Cars', href: urls.cars },
+  { label: 'Motorcycles', href: urls.motorcycles },
+  { label: 'Quote', href: urls.quote }
+]
+
+const navLinks = textLinks.filter((link) => link.href !== Astro.url.pathname)
+
+/** Conditional variable to switch open the nav menu */
+---
+
+<nav class='text-[#FDD387] sm:flex'>
+  <div class='flex bg-[#02003D] h-20 items-center justify-between px-3 sm:w-1/3'>
+    <div class='flex-none w-20'>
+      <Image
+        src={Logo}
+        class='bg-[#02003D] w-9/12 sm:w-10/12'
+        alt='Low Raider Dreamworks Garage Logo.'
+      />
+    </div>
+
+    <!-- Responsive mobile -->
+    <div class='flex-initial'>
+      <button id='nav-button-hamburger' class='text-3xl sm:hidden'
+        >{(<GiHamburgerMenu />)}</button
+      >
+      <button id='nav-button-close' class='text-3xl hidden'
+        >{(<IoMdClose />)}</button
+      >
+    </div>
+  </div>
+  <section
+    class='bg-[#02003D] hidden items-end flex-col w-full absolute sm:flex sm:relative sm:justify-between text-3xl sm:text-xl sm:flex-row sm:pr-4'
+    id='nav-menu'
+  >
+    <ul
+      class='nav-items w-1/3 sm:flex sm:items-center sm:justify-between sm:w-2/3'
+    >
+      {
+        navLinks.map(({ label, href }) => (
+          <li class='flex justify-center items-center h-12'>
+            <p class='mr-2 sm:hidden'>
+              {label === 'Home' && <FaHome />}
+              {label === 'Cars' && <FaCar />}
+              {label === 'Motorcycles' && <FaMotorcycle />}
+              {label === 'Quote' && <IoMdPricetag />}
+            </p>
+            <a href={href}>{label}</a>
+          </li>
+        ))
+      }
+      <hr class='h-1px my-2 bg-[#D43661] border-1 sm:hidden' />
+    </ul>
+    <div class='flex justify-end my-3 w-1/3 sm:w-1/3'>
+      <div class="w-full sm:w-1/2 flex justify-around sm:justify-between">
+        <span class='fi fi-us'></span><span class='fi fi-co'></span>
+      </div>
+    </div>
+  </section>
+</nav>
+
+<script>
+  // Find all buttons with the `alert` class on the page.
+  const navButtonHamburger = document.getElementById('nav-button-hamburger')
+  const navButtonClose = document.getElementById('nav-button-close')
+  const navMenu = document.getElementById('nav-menu')
+
+  // Handle clicks on each button.
+  let isOpen = false
+
+  if (navButtonHamburger) {
+    navButtonHamburger.addEventListener('click', () => {
+      isOpen = !isOpen
+
+      if (isOpen && navButtonHamburger && navButtonClose && navMenu) {
+        navButtonHamburger.style.display = 'none'
+        navButtonClose.style.display = 'flex'
+        navMenu.style.display = 'flex'
+      }
+    })
+  }
+
+  if (navButtonClose) {
+    navButtonClose.addEventListener('click', () => {
+      isOpen = !isOpen
+
+      if (!isOpen && navButtonHamburger && navButtonClose && navMenu) {
+        navButtonClose.style.display = 'none'
+        navButtonHamburger.style.display = 'flex'
+        navMenu.style.display = 'none'
+      }
+    })
+  }
+</script>
