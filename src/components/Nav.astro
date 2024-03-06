@@ -1,6 +1,7 @@
 ---
 import { Image } from 'astro:assets'
-import Logo from '../images/Logo.jpeg'
+// import Logo from '.../images/Logo.jpeg'
+import Logo from 'assests/logo.jpeg'
 import { socials, urls } from '../constants'
 import '/node_modules/flag-icons/css/flag-icons.min.css'
 import { FaCar, FaHome, FaMotorcycle } from 'react-icons/fa'
@@ -24,8 +25,8 @@ const navLinks = textLinks.filter((link) => link.href !== Astro.url.pathname)
 <nav class='text-[#FDD387] sm:flex'>
   <div class='flex bg-[#02003D] h-20 items-center justify-between px-3 sm:w-1/3'>
     <div class='flex-none w-20'>
-      <Image
-        src={Logo}
+      <img
+        src='assets/Logo.jpeg'
         class='bg-[#02003D] w-9/12 sm:w-11/12'
         alt='Low Raider Dreamworks Garage Logo.'
       />
