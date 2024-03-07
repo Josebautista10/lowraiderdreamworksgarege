@@ -1,11 +1,15 @@
 ---
 import Nav from '../components/Nav.astro'
+import Footer from '../components/Footer.astro'
 
-interface Props {
-  title: string
-}
+// interface Props {
+//   title: string
+// }
 
-const { title } = Astro.props
+// const { title } = Astro.props
+// var s2 = s1.substring(1);
+const removeTitleSlash = Astro.url.pathname.substring(1)
+const pageTitle = removeTitleSlash.charAt(0).toUpperCase() + removeTitleSlash.slice(1);
 ---
 
 <!doctype html>
@@ -15,16 +19,17 @@ const { title } = Astro.props
     <meta name='description' content='Astro description' />
     <meta name='viewport' content='width=device-width' />
     <link rel='icon' type='image/svg+xml' href='/favicon.svg' />
+		<link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+		<script src="../../node_modules/preline/dist/preline.js"></script>
     <meta name='generator' content={Astro.generator} />
-    <title>{title}</title>
+    <title>{!pageTitle ? 'Home' : pageTitle}</title>
   </head>
-  <body class='bg-[#02003D]'>
+  <body class='bg-[#02003D] text-[#FDD387]'>
     <Nav />
-    <img
-      src='assets/Logo.webp'
-      class='bg-[#02003D] w-9/12 sm:w-11/12'
-      alt='Low Raider Dreamworks Garage Logo.'
-    />
+
     <slot />
+		<Footer/>
+		<script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
   </body>
+	
 </html>

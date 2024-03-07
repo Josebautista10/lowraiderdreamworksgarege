@@ -20,12 +20,12 @@ const navLinks = textLinks.filter((link) => link.href !== Astro.url.pathname)
 /** Conditional variable to switch open the nav menu */
 ---
 
-<nav class='text-[#FDD387] sm:flex'>
-  <div class='flex bg-[#02003D] h-20 items-center justify-between px-3 sm:w-1/3'>
+<nav class=' sm:flex'>
+  <div class='flex  h-20 items-center justify-between px-3 sm:w-1/3'>
     <div class='flex-none w-20'>
       <img
         src='assets/Logo.webp'
-        class='bg-[#02003D] w-9/12 sm:w-11/12'
+        class=' w-9/12 sm:w-11/12'
         alt='Low Raider Dreamworks Garage Logo.'
       />
     </div>
@@ -41,7 +41,7 @@ const navLinks = textLinks.filter((link) => link.href !== Astro.url.pathname)
     </div>
   </div>
   <section
-    class='bg-[#02003D] hidden items-end flex-col w-full absolute sm:flex sm:relative sm:justify-between text-3xl sm:text-xl sm:flex-row sm:pr-4'
+    class=' hidden items-end flex-col w-full absolute sm:flex sm:relative sm:justify-between text-3xl sm:text-xl sm:flex-row sm:pr-4'
     id='nav-menu'
   >
     <ul
